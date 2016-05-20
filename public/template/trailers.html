@@ -1,0 +1,28 @@
+<menu></menu>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-controller="trailerCtrl">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Url</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" ng-model="tr.title" /></td>
+                            <td><input type="text" class="form-control" ng-model="tr.url" /></td>
+                            <td><button class="btn btn-primary" ng-click="addTrailer()">Add New Trailer</button></td>
+                        </tr>
+                        <tr ng-repeat="trailer in trailers">
+                            <td ng-cloak ng-click="getId(trailer._id)">{{trailer.title}}</td>
+                            <td ng-cloak>{{trailer.url}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

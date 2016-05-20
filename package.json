@@ -1,0 +1,24 @@
+{
+  "name": "mercury",
+  "version": "1.0.0",
+  "description": "A trailer App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "trailer",
+    "teaser"
+  ],
+  "author": "Vipul v",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "body-parser": "^1.15.1",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.4",
+    "jquery": "^2.2.3",
+    "mongoose": "^4.4.17"
+  }
+}
