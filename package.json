@@ -15,6 +15,7 @@
   "dependencies": {
     "angular": "^1.5.5",
     "angular-route": "^1.5.5",
+    "angular-youtube-embed": "^1.2.0",
     "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
     "express": "^4.13.4",

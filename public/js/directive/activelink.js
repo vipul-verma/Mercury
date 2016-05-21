@@ -14,8 +14,10 @@
                 angular.forEach(elem.find('a'), function(a){
                    a = angular.element(a);
                    var attr = a.attr('href');
+                    
                    
                    if( -1 !== href.indexOf(attr)) {
+                       //console.log(href.indexOf(attr));
                        a.parent().addClass('active')
                    } else {
                        a.parent().removeClass('active')

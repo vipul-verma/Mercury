@@ -14,11 +14,18 @@
                         <tr>
                             <td><input type="text" class="form-control" ng-model="tr.title" /></td>
                             <td><input type="text" class="form-control" ng-model="tr.url" /></td>
-                            <td><button class="btn btn-primary" ng-click="addTrailer()">Add New Trailer</button></td>
+                            <td>
+                                <button class="btn btn-primary" ng-click="addTrailer()">Add New Trailer</button>
+                                <button class="btn btn-info" ng-click="update()">Update</button>
+                            </td>
                         </tr>
                         <tr ng-repeat="trailer in trailers">
-                            <td ng-cloak ng-click="getId(trailer._id)">{{trailer.title}}</td>
+                            <td ng-cloak ng-click="getId(trailer._id)"><a ng-href="#/trailers/{{trailer._id}}">{{trailer.title}}</a></td>
                             <td ng-cloak>{{trailer.url}}</td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="remove(trailer._id)">Remove</button>
+                                <button class="btn btn-warning" ng-click="edit(trailer._id)">Edit</button>                                
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -25,13 +25,16 @@ app.use('/ng', express.static(__dirname + '/node_modules/angular'));
 //Load AngularJS Routes
 app.use('/ngr', express.static(__dirname + '/node_modules/angular-route'));
 
+//Load Angular Youtube custom directive
+app.use('/ayt', express.static(__dirname + '/node_modules/angular-youtube-embed/dist'));
+
 
 mongoose.connect('mongodb://localhost/mercury');
 mongoose.connection.once('open', function(){
     
     var trailers = require('./modelSchema/trailerSchema.js');
     
-    //Get List from dB    
+    //Get List of Trailers   
     app.get('/trailers', function(req, res){
         trailers.find(function(err, docs){
             if(err) {
@@ -41,9 +44,8 @@ mongoose.connection.once('open', function(){
         })
     });
     
-    app.post('/trailers', function(req, res){
-        console.log(req.body);
-        
+    // Add New Trailer    
+    app.post('/trailers', function(req, res){        
         var trailer = new trailers();
         
         trailer.title = req.body.title;
@@ -55,6 +57,31 @@ mongoose.connection.once('open', function(){
         
     });
     
+    // View Single Trailer
+    app.get('/trailers/:id', function(req, res){
+        trailers.findById(req.params.id, function(err, trailer){
+            res.json(trailer);
+        })
+    })
+    
+    // Delete single trailers
+    app.delete('/trailers/:id', function(req, res){
+        trailers.findByIdAndRemove(req.params.id, function(err, trailers){
+            res.json(trailers);
+        })
+    })
+    
+    // Update Single trailer details
+    app.put('/trailers/:id', function(req, res){
+        trailers.findById(req.params.id, function(err, trailer){
+            trailer.title = req.body.title;
+            trailer.url = req.body.url;
+            
+            trailer.save(function(err){
+                res.json(trailer);
+            })
+        })
+    })
    
 });
 
